@@ -6,11 +6,11 @@ Gem::Specification.new do |s|
   s.name        = "artoo-pebble"
   s.version     = Artoo::Pebble::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Your name here"]
-  s.email       = ["your email here"]
-  s.homepage    = "Your homepage here"
-  s.summary     = %q{Artoo adaptor and driver for Pebble}
-  s.description = %q{Artoo adaptor and driver for Pebble}
+  s.authors     = ["Ron Evans"]
+  s.email       = ["artoo@hybridgroup.com"]
+  s.homepage    = "https://github.com/hybridgroup/artoo-pebble"
+  s.summary     = %q{Artoo adaptor and driver for Pebble smart watch}
+  s.description = %q{Artoo adaptor and driver for Pebble smart watch}
 
   s.rubyforge_project = "artoo-pebble"
 
@@ -20,9 +20,8 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_runtime_dependency 'artoo', '~> 1.0.0.pre'
-  # TODO: add your development dependencies here
-  # EXAMPLE:
-  # s.add_development_dependency 'minitest', '~> 5.0'
-  # s.add_development_dependency 'minitest-happy'
-  # s.add_development_dependency 'mocha', '~> 0.14.0'
+  s.add_runtime_dependency 'hybridgroup-pebblewatch', '~> 0.0.4'
+  s.add_development_dependency 'minitest', '~> 5.0'
+  s.add_development_dependency 'minitest-happy'
+  s.add_development_dependency 'mocha', '~> 0.14.0'
 end
