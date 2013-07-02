@@ -14,6 +14,8 @@ gem install artoo-pebble
 
 ## Connecting to Pebble
 
+This software requires version 1.11.1 of the Pebble watch firmware.
+
 ### Ubuntu
 
 You will need to pair with the Pebble, and then you can find the Bluetooth address, for example `00:18:33:86:37:8B`. Once you know the address, you can use the rfcomm program to map a port to the device:
