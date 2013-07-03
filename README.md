@@ -36,7 +36,7 @@ end
 
 ## Connecting to Pebble
 
-This software requires version 1.11.1 of the Pebble watch firmware.
+This software requires version 1.12.0 of the Pebble watch firmware.
 
 ### Ubuntu
 
