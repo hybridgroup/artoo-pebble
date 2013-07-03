@@ -14,7 +14,7 @@ gem install artoo-pebble
 
 ## Using
 
-```
+```ruby
 require 'artoo'
 
 connection :pebble, :adaptor => :pebble, :port => "/dev/rfcomm0", :id => "378B"
