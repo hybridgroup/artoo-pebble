@@ -25,8 +25,7 @@ module Artoo
         @retries_left = RETRY_COUNT
         require 'pebble' unless defined?(::Pebble)
         begin
-          Logger.info parent.connection_id
-          Logger.info connect_to
+          #::Pebble.logger.level = ::Logger::DEBUG
           @pebble = ::Pebble::Watch.new(parent.connection_id, connect_to)
           @pebble.connect
           super
