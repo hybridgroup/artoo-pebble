@@ -5,7 +5,9 @@ module Artoo
     # The pebble driver behaviors
     class Pebble < Driver
 
-      COMMANDS = [:set_nowplaying_metadata]
+      COMMANDS = [:ping, :notification_sms, :notification_email, :set_nowplaying_metadata,
+                  :get_versions, :get_installed_apps, :remove_app, :get_time, :set_time,
+                  :system_message, :reset]
 
       # Start driver and any required connections
       def start_driver
