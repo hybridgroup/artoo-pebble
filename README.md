@@ -6,6 +6,8 @@ Artoo is a open source micro-framework for robotics using Ruby.
 
 For more information abut Artoo, check out our repo at https://github.com/hybridgroup/artoo
 
+[![Code Climate](https://codeclimate.com/github/hybridgroup/artoo-pebble.png)](https://codeclimate.com/github/hybridgroup/artoo-pebble) [![Build Status](https://travis-ci.org/hybridgroup/artoo-pebble.png?branch=master)](https://travis-ci.org/hybridgroup/artoo-pebble)
+
 ## Installing
 
 ```
