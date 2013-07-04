@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    artoo-pebble (0.1.0)
+    artoo-pebble (0.1.1)
       artoo (~> 1.0.0.rc1)
       hybridgroup-pebblewatch (~> 0.1.2)
 
