@@ -1,9 +1,9 @@
 PATH
   remote: .
   specs:
-    artoo-pebble (0.0.1)
+    artoo-pebble (0.1.0)
       artoo (~> 1.0.0.rc1)
-      hybridgroup-pebblewatch (~> 0.0.4)
+      hybridgroup-pebblewatch (~> 0.1.2)
 
 GEM
   remote: http://rubygems.org/
@@ -26,9 +26,7 @@ GEM
       certified
       http_parser.rb
     http_parser.rb (0.5.3)
-    hybridgroup-pebblewatch (0.0.4)
-      hybridgroup-serialport (~> 1.2)
-    hybridgroup-serialport (1.2.1)
+    hybridgroup-pebblewatch (0.1.2)
     metaclass (0.0.1)
     method_source (0.8.1)
     minitest (5.0.6)
