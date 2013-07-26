@@ -40,11 +40,53 @@ end
 
 This software requires version 1.12.0 of the Pebble watch firmware.
 
+### OSX
+
+The main steps are:
+- Pair your computer and the Pebble
+- Use a socket to serial connection to map a TCP socket to the local port
+- Connect to the device via Artoo
+
+To figure out which port your pebble is connected to, use the `artoo connect scan` command:
+
+```
+$ artoo connect scan
+```
+
+Now you are ready to connect to the Sphero using the socket, in this example port 4567:
+
+```
+artoo connect socat 4567 pebble
+```
+
 ### Ubuntu
 
-You will need to pair with the Pebble, and then you can find the Bluetooth address, for example `00:18:33:86:37:8B`. Once you know the address, you can use the rfcomm program to map a port to the device:
+The main steps are:
+- Pair your computer and the Pebble
+- Map your device to a port
+- Use a socket to serial connection to map a TCP socket to the local port
+- Connect to the device via Artoo
+
+You will need to pair with the Pebble, entering any needed password.
+
+Then you can find the Bluetooth address, for example `00:18:33:86:37:8B`, by using the `artoo connect scan` command: 
 
 ```
-sudo rfcomm bind 0 00:18:33:86:37:8B 1
-sudo chmod 666 /dev/rfcomm0
+$ artoo connect scan
 ```
+
+Once you know the address, you can use the `artoo connect bind` command to map a port to the device:
+
+```
+artoo connect bind 00:18:33:86:37:8B pebble
+```
+
+Now you are ready to connect to the Pebble using a socket, in this example port 4567:
+
+```
+artoo connect socat 4567 pebble
+```
+
+### Windows
+
+Instructions go here...
