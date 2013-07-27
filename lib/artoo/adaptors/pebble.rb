@@ -23,12 +23,11 @@ module Artoo
         @retries_left = RETRY_COUNT
         require 'pebble' unless defined?(::Pebble)
         begin
-          #::Pebble.logger.level = ::Logger::DEBUG
           @pebble = ::Pebble::Watch.new(parent.connection_id, connect_to)
           @pebble.connect
           super
           return true
-        rescue Errno::EBUSY => e
+        rescue Errno::EBUSY, Errno::ECONNREFUSED => e
           @retries_left -= 1
           if @retries_left > 0
             retry
