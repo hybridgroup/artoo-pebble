@@ -14,9 +14,7 @@ module Artoo
       # Closes connection with device if connected
       # @return [Boolean]
       def finalize
-        if connected?
-          pebble.disconnect
-        end
+        pebble.disconnect if connected?
       end
 
       # Creates a connection with device
@@ -45,7 +43,7 @@ module Artoo
       # Closes connection with device
       # @return [Boolean]
       def disconnect
-        pebble.disconnect
+        pebble.disconnect if connected?
         super
       end
 
