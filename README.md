@@ -89,4 +89,4 @@ artoo connect socat 4567 pebble
 
 ### Windows
 
-Instructions go here...
+We are currently working with the Celluloid team to add Windows support. Please check back soon!
