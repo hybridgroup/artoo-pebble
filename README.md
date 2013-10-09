@@ -56,7 +56,7 @@ $ artoo connect scan
 Now you are ready to connect to the Sphero using the socket, in this example port 4567:
 
 ```
-artoo connect socat 4567 pebble
+artoo connect serial 4567 pebble
 ```
 
 ### Ubuntu
