@@ -84,7 +84,7 @@ artoo connect bind 00:18:33:86:37:8B pebble
 Now you are ready to connect to the Pebble using a socket, in this example port 4567:
 
 ```
-artoo connect socat 4567 pebble
+artoo connect socat pebble 4567
 ```
 
 ### Windows
