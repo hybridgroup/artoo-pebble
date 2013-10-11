@@ -1,6 +1,6 @@
 require 'artoo'
 
-connection :pebble, :adaptor => :pebble, :port => "/dev/rfcomm0", :id => "378B"
+connection :pebble, :adaptor => :pebble, :port => "127.0.0.1:4567", :id => "378B"
 device :watch, :driver => :pebble
 
 def button_push(*data)
