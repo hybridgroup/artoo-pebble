@@ -19,7 +19,7 @@ gem install artoo-pebble
 ```ruby
 require 'artoo'
 
-connection :pebble, :adaptor => :pebble, :port => "/dev/rfcomm0", :id => "378B"
+connection :pebble, :adaptor => :pebble, :port => "127.0.0.1:4567", :id => "378B"
 device :watch, :driver => :pebble
 
 def button_push(*data)
@@ -56,7 +56,7 @@ $ artoo connect scan
 Now you are ready to connect to the Sphero using the socket, in this example port 4567:
 
 ```
-artoo connect serial 4567 pebble
+artoo connect serial pebble 4567
 ```
 
 ### Ubuntu
@@ -69,7 +69,7 @@ The main steps are:
 
 You will need to pair with the Pebble, entering any needed password.
 
-Then you can find the Bluetooth address, for example `00:18:33:86:37:8B`, by using the `artoo connect scan` command: 
+Then you can find the Bluetooth address, for example `00:18:33:86:37:8B`, by using the `artoo connect scan` command:
 
 ```
 $ artoo connect scan
@@ -84,7 +84,7 @@ artoo connect bind 00:18:33:86:37:8B pebble
 Now you are ready to connect to the Pebble using a socket, in this example port 4567:
 
 ```
-artoo connect socat pebble 4567
+artoo connect serial pebble 4567
 ```
 
 ### Windows
