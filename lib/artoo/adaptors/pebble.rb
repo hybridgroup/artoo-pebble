@@ -5,17 +5,10 @@ module Artoo
     # Connect to a pebble device
     # @see device documentation for more information
     class Pebble < Adaptor
-      finalizer :finalize
       attr_reader :pebble
 
       # Number of retries when connecting
       RETRY_COUNT = 5
-
-      # Closes connection with device if connected
-      # @return [Boolean]
-      def finalize
-        pebble.disconnect if connected?
-      end
 
       # Creates a connection with device
       # @return [Boolean]
@@ -42,7 +35,7 @@ module Artoo
       # Closes connection with device
       # @return [Boolean]
       def disconnect
-        pebble.disconnect if connected?
+        pebble.disconnect
         super
       end
 
