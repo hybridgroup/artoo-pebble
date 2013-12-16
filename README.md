@@ -53,7 +53,7 @@ To figure out which port your pebble is connected to, use the `artoo connect sca
 $ artoo connect scan
 ```
 
-Now you are ready to connect to the Sphero using the socket, in this example port 4567:
+Now you are ready to connect to the Pebble using the socket, in this example port 4567:
 
 ```
 artoo connect serial pebble 4567
