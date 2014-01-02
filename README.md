@@ -47,13 +47,13 @@ The main steps are:
 - Use a socket to serial connection to map a TCP socket to the local port
 - Connect to the device via Artoo
 
-To figure out which port your pebble is connected to, use the `artoo connect scan` command:
+To figure out which port your Pebble is connected to, use the `artoo connect scan` command:
 
 ```
 $ artoo connect scan
 ```
 
-Now you are ready to connect to the Sphero using the socket, in this example port 4567:
+Now you are ready to connect to the Pebble using the socket, in this example port 4567:
 
 ```
 artoo connect serial pebble 4567
