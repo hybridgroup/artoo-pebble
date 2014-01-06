@@ -1,6 +1,6 @@
 # Artoo Adaptor For Pebble
 
-This repository contains the Artoo (http://artoo.io/) adaptor for the Pebble smart watch (http://getpebble.com/). It uses the pebblewatch gem (https://github.com/hybridgroup/pebblewatch) to perform all communication.
+This repository contains the Artoo (http://artoo.io/) adaptor for the Pebble smart watch (http://getpebble.com/). It uses the Pebble 2.0 SDK, and requires the 2.0 iOS or Android app, and that the "Chomps" app (https://github.com/hybridgroup/chomps) has been installed on the Pebble watch.
 
 Artoo is a open source micro-framework for robotics using Ruby.
 
@@ -19,19 +19,17 @@ gem install artoo-pebble
 ```ruby
 require 'artoo'
 
-connection :pebble, :adaptor => :pebble, :port => "127.0.0.1:4567", :id => "378B"
+api :port => "127.0.0.1:8080"
+connection :pebble, :adaptor => :pebble
 device :watch, :driver => :pebble
 
-def button_push(*data)
-  puts data[1].button unless data[1].nil?
-end
-
 work do
-  on watch, :media_control => :button_push
-
-  watch.set_nowplaying_metadata("Artoo", "Hello", Time.now.to_s)
-  every(5.seconds) do
-    watch.set_nowplaying_metadata("Artoo", "Update...", Time.now.to_s)
+  @c = 100
+  every(1.second) do
+    @c++
+    str = "c: #{c}"
+    pebble.message_queue().push(str)
+    Logger.info(pebble.last_message())
   end
 end
 ```
@@ -43,49 +41,16 @@ This software requires version 1.12.0 of the Pebble watch firmware.
 ### OSX
 
 The main steps are:
-- Pair your computer and the Pebble
-- Use a socket to serial connection to map a TCP socket to the local port
-- Connect to the device via Artoo
-
-To figure out which port your Pebble is connected to, use the `artoo connect scan` command:
-
-```
-$ artoo connect scan
-```
-
-Now you are ready to connect to the Pebble using the socket, in this example port 4567:
-
-```
-artoo connect serial pebble 4567
-```
+- Pair your phone and the Pebble
+- Install the "Chomps" app on the Pebble watch (https://github.com/hybridgroup/chomps)
+- Connect to the phone/watch via Artoo
 
 ### Ubuntu
 
 The main steps are:
-- Pair your computer and the Pebble
-- Map your device to a port
-- Use a socket to serial connection to map a TCP socket to the local port
-- Connect to the device via Artoo
-
-You will need to pair with the Pebble, entering any needed password.
-
-Then you can find the Bluetooth address, for example `00:18:33:86:37:8B`, by using the `artoo connect scan` command:
-
-```
-$ artoo connect scan
-```
-
-Once you know the address, you can use the `artoo connect bind` command to map a port to the device:
-
-```
-artoo connect bind 00:18:33:86:37:8B pebble
-```
-
-Now you are ready to connect to the Pebble using a socket, in this example port 4567:
-
-```
-artoo connect serial pebble 4567
-```
+- Pair your phone and the Pebble
+- Install the "Chomps" app on the Pebble watch (https://github.com/hybridgroup/chomps)
+- Connect to the phone/watch via Artoo
 
 ### Windows
 

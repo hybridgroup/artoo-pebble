@@ -5,32 +5,19 @@ module Artoo
     # The pebble driver behaviors
     class Pebble < Driver
 
-      COMMANDS = [:ping, :notification_sms, :notification_email, :set_nowplaying_metadata,
-                  :get_versions, :get_installed_apps, :remove_app, :get_time, :set_time,
-                  :system_message, :reset]
+      COMMANDS = [:messages, :last_message]
 
       # Start driver and any required connections
       def start_driver
-        begin
-          every(interval) do
-            handle_message_events
-          end
-
-          connection.listen_for_events(false)
-
-          super
-        rescue Exception => e
-          Logger.error "Error starting Pebble driver!"
-          Logger.error e.message
-          Logger.error e.backtrace.inspect
-        end
+        @messages = []
       end
 
-      def handle_message_events
-        while not connection.protocol.messages.empty? do 
-          e = connection.protocol.messages.pop
-          publish(event_topic_name(e[0].to_s), e[1])
-        end          
+      def messages
+        @messages
+      end
+
+      def last_message
+        @messages.last
       end
     end
   end
