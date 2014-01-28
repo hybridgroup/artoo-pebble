@@ -10,6 +10,9 @@ module Artoo
                   :system_message, :reset]
 
       # Start driver and any required connections
+      # Public: Starts the driver.
+      #
+      # Returns null.
       def start_driver
         begin
           every(interval) do
@@ -26,6 +29,9 @@ module Artoo
         end
       end
 
+      # Public: Handles different message events.
+      #
+      # Returns sphero_event.
       def handle_message_events
         while not connection.protocol.messages.empty? do 
           e = connection.protocol.messages.pop
