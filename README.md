@@ -1,6 +1,6 @@
 # Artoo Adaptor For Pebble
 
-This repository contains the Artoo (http://artoo.io/) adaptor for the Pebble smart watch (http://getpebble.com/). It uses the pebblewatch gem (https://github.com/hybridgroup/pebblewatch) to perform all communication.
+This repository contains the Artoo (http://artoo.io/) adaptor and driver for the Pebble smart watch (http://getpebble.com/). It uses the Pebble 2.0 SDK, and requires the 2.0 iOS or Android app, and that the "Chomps" app (https://github.com/hybridgroup/chomps) has been installed on the Pebble watch.
 
 Artoo is a open source micro-framework for robotics using Ruby.
 
@@ -19,74 +19,45 @@ gem install artoo-pebble
 ```ruby
 require 'artoo'
 
-connection :pebble, :adaptor => :pebble, :port => "127.0.0.1:4567", :id => "378B"
+connection :pebble, :adaptor => :pebble
 device :watch, :driver => :pebble
 
-def button_push(*data)
-  puts data[1].button unless data[1].nil?
-end
-
 work do
-  on watch, :media_control => :button_push
-
-  watch.set_nowplaying_metadata("Artoo", "Hello", Time.now.to_s)
-  every(5.seconds) do
-    watch.set_nowplaying_metadata("Artoo", "Update...", Time.now.to_s)
+  c = 100
+  every 1.second do
+    c++
+    str = "c: \#{c}"
+    pebble.message_queue.push(str)
+    Logger.info(pebble.last_message)
   end
 end
 ```
 
 ## Connecting to Pebble
 
-This software requires version 1.12.0 of the Pebble watch firmware.
+Communication between the Pebble watch and Artoo takes place entirely using the Artoo API. This adaptor uses the Pebble 2.0 SDK, and requires the 2.0 iOS or Android app, and that the "Chomps" app (https://github.com/hybridgroup/chomps) has been installed on the Pebble watch.
 
-### OSX
+## Documentation
 
-The main steps are:
-- Pair your computer and the Pebble
-- Use a socket to serial connection to map a TCP socket to the local port
-- Connect to the device via Artoo
+Check out our [documentation](http://artoo.io/documentation/) for lots of information about how to use Artoo.
 
-To figure out which port your Pebble is connected to, use the `artoo connect scan` command:
+## IRC
 
-```
-$ artoo connect scan
-```
+Need more help? Just want to say "Hello"? Come visit us on IRC freenode #artoo
 
-Now you are ready to connect to the Pebble using the socket, in this example port 4567:
+## Contributing
 
-```
-artoo connect serial pebble 4567
-```
+* All patches must be provided under the Apache 2.0 License
+* Please use the -s option in git to "sign off" that the commit is your work and you are providing it under the Apache 2.0 License
+* Submit a Github Pull Request to the appropriate branch and ideally discuss the changes with us in IRC.
+* We will look at the patch, test it out, and give you feedback.
+* Avoid doing minor whitespace changes, renamings, etc. along with merged content. These will be done by the maintainers from time to time but they can complicate merges and should be done seperately.
+* Take care to maintain the existing coding style.
+* Add unit tests for any new or changed functionality.
+* All pull requests should be "fast forward"
+  * If there are commits after yours use “git rebase -i <new_head_branch>”
+  * If you have local changes you may need to use “git stash”
+  * For git help see [progit](http://git-scm.com/book) which is an awesome (and free) book on git
 
-### Ubuntu
 
-The main steps are:
-- Pair your computer and the Pebble
-- Map your device to a port
-- Use a socket to serial connection to map a TCP socket to the local port
-- Connect to the device via Artoo
-
-You will need to pair with the Pebble, entering any needed password.
-
-Then you can find the Bluetooth address, for example `00:18:33:86:37:8B`, by using the `artoo connect scan` command:
-
-```
-$ artoo connect scan
-```
-
-Once you know the address, you can use the `artoo connect bind` command to map a port to the device:
-
-```
-artoo connect bind 00:18:33:86:37:8B pebble
-```
-
-Now you are ready to connect to the Pebble using a socket, in this example port 4567:
-
-```
-artoo connect serial pebble 4567
-```
-
-### Windows
-
-We are currently working with the Celluloid team to add Windows support. Please check back soon!
+(c) 2012-2014 The Hybrid Group

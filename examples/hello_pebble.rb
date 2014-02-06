@@ -1,11 +1,14 @@
 require 'artoo'
 
-connection :pebble, :adaptor => :pebble, :port => "127.0.0.1:4567", :id => "E36E"
+connection :pebble, :adaptor => :pebble
 device :watch, :driver => :pebble
 
 work do
-  watch.set_nowplaying_metadata("Artoo", "Hello", Time.now.to_s)
-  every(5.seconds) do
-    watch.set_nowplaying_metadata("Artoo", "Update...", Time.now.to_s)
+  c = 100
+  every(1.second) do
+    c++
+    str = "c: \#{c}"
+    pebble.message_queue.push(str)
+    Logger.info(pebble.last_message)
   end
 end
