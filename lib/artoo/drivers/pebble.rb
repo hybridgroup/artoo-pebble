@@ -20,7 +20,7 @@ module Artoo
       end
 
       def last_message
-        @messages.pop
+        @messages.last
       end
     end
   end
