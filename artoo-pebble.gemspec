@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/hybridgroup/artoo-pebble"
   s.summary     = %q{Artoo adaptor and driver for Pebble smart watch}
   s.description = %q{Artoo adaptor and driver for Pebble smart watch}
+  s.license     = 'Apache 2.0'
 
   s.rubyforge_project = "artoo-pebble"
 
