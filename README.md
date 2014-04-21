@@ -1,6 +1,6 @@
 # Artoo Adaptor For Pebble
 
-This repository contains the Artoo (http://artoo.io/) adaptor and driver for the Pebble smart watch (http://getpebble.com/). It uses the Pebble 2.0 SDK, and requires the 2.0 iOS or Android app, and that the "Chomps" app (https://github.com/hybridgroup/chomps) has been installed on the Pebble watch.
+This repository contains the Artoo (http://artoo.io/) adaptor and driver for the Pebble smart watch (http://getpebble.com/).
 
 Artoo is a open source micro-framework for robotics using Ruby.
 
@@ -10,32 +10,49 @@ For more information abut Artoo, check out our repo at https://github.com/hybrid
 
 ## Installing
 
+* Install artoo and artoo-pebble gems.
 ```
+gem install artoo
 gem install artoo-pebble
 ```
 
+* Install Pebble 2.0 iOS or Android app. (If you haven't already)
+* Follow README to install and configure "Chomps" on your watch: https://github.com/hybridgroup/chomps
+
 ## Using
+
+* Before running the example, make sure configuration settings match with your program,
+in example, api host is your computer IP, robot name is 'pebble', and robot api port is 8080
 
 ```ruby
 require 'artoo'
 
 connection :pebble, :adaptor => :pebble
-device :watch, :driver => :pebble
+device     :watch,  :driver  => :pebble, :name => 'pebble'
+
+api :host => '0.0.0.0', :port => '8080'
+
+name 'pebble'
+
+def button_push(*data)
+  unless data[1].nil?
+    p "#{data[1]} button pushed"
+  end
+end
 
 work do
-  c = 100
-  every 1.second do
-    c++
-    str = "c: \#{c}"
-    pebble.message_queue.push(str)
-    Logger.info(pebble.last_message)
-  end
+  on pebble, :button => :button_push
 end
 ```
 
-## Connecting to Pebble
+## Supported Features
 
-Communication between the Pebble watch and Artoo takes place entirely using the Artoo API. This adaptor uses the Pebble 2.0 SDK, and requires the 2.0 iOS or Android app, and that the "Chomps" app (https://github.com/hybridgroup/chomps) has been installed on the Pebble watch.
+* We support event detection of 3 main pebble buttons.
+
+## Upcoming Features
+
+* Accelerometer support
+* Pushing data to pebble watch
 
 ## Documentation
 
