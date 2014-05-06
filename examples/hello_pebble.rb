@@ -14,5 +14,6 @@ def button_push(*data)
 end
 
 work do
+  pebble.send_notification("Hello Pebble!")
   on pebble, :button => :button_push
 end

@@ -41,6 +41,7 @@ def button_push(*data)
 end
 
 work do
+  pebble.send_notification("Hello Pebble!")
   on pebble, :button => :button_push
 end
 ```
@@ -48,11 +49,11 @@ end
 ## Supported Features
 
 * We support event detection of 3 main pebble buttons.
+* Sending text notification message to pebble
 
 ## Upcoming Features
 
 * Accelerometer support
-* Pushing data to pebble watch
 
 ## Documentation
 

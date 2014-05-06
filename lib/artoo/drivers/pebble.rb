@@ -5,7 +5,7 @@ module Artoo
     # The pebble driver behaviors
     class Pebble < Driver
 
-      COMMANDS = [:message_queue, :last_message, :publish_event]
+      COMMANDS = [:send_notification, :pending_message, :publish_event]
 
       # Start driver and any required connections
       # Public: Starts the driver.
@@ -15,12 +15,18 @@ module Artoo
         @messages = []
       end
 
+      def send_notification(message)
+        @messages << message
+
+        message
+      end
+
       def message_queue
         @messages
       end
 
-      def last_message
-        @messages.last
+      def pending_message
+        @messages.shift || "No pending messages"
       end
 
       def publish_event(name, data)

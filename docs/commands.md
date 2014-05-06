@@ -1,17 +1,21 @@
 # Commands
 
-## message_queue           
+## send_notification
 
-Used to add or access the queue of strings being passed to the Pebble watch.
+Used to send a notification to pebble watch
 
-##### Returns
+## pending_message
 
-`Array` with all message strings
-
-## last_message           
-
-Returns and removes the string with the last message from the queue of messages being passed with the Pebble watch.
+Used from chomps apps to get pending notification message. DIRECT USE IS NOT RECOMMENDED.
 
 ##### Returns
 
 `String` with the last message on the queue.
+
+## publish_event
+
+Used from chomps apps to publish "Button" events. DIRECT USE IS NOT RECOMMENDED.
+
+##### Returns
+
+`boolean` operation result
