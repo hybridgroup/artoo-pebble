@@ -26,7 +26,7 @@ module Artoo
       end
 
       def pending_message
-        @messages.shift || "No pending messages"
+        @messages.shift
       end
 
       def publish_event(name, data)

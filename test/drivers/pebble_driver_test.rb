@@ -24,7 +24,7 @@ describe Artoo::Drivers::Pebble do
 
     @driver.pending_message.must_equal "hello"
     @driver.pending_message.must_equal "world"
-    @driver.pending_message.must_equal "No pending messages"
+    @driver.pending_message.must_equal nil
   end
 
 end
