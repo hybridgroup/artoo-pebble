@@ -50,9 +50,6 @@ end
 
 * We support event detection of 3 main pebble buttons.
 * Sending text notification message to pebble
-
-## Upcoming Features
-
 * Accelerometer support
 
 ## Documentation
