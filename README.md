@@ -17,7 +17,7 @@ gem install artoo-pebble
 ```
 
 * Install Pebble 2.0 iOS or Android app. (If you haven't already)
-* Follow README to install and configure "Chomps" on your watch: https://github.com/hybridgroup/chomps
+* Follow README to install and configure "watchbot" on your watch: https://github.com/hybridgroup/watchbot
 
 ## Using
 
