@@ -13,7 +13,12 @@ def button_push(*data)
   end
 end
 
+def tap_event(*data)
+  p "Tap event detected"
+end
+
 work do
   pebble.send_notification("Hello Pebble!")
   on pebble, :button => :button_push
+  on pebble, :tap    => :tap_event
 end
