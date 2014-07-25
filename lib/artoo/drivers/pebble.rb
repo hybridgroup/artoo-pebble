@@ -31,6 +31,7 @@ module Artoo
 
       def publish_event(name, data)
         publish(event_topic_name(name), data)
+        nil
       end
 
     end
